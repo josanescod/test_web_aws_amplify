@@ -1,8 +1,12 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig,  passthroughImageService } from 'astro/config';
 import awsAmplify from 'astro-aws-amplify';
 
 // https://astro.build/config
 export default defineConfig({
-    adapter: awsAmplify(),
+  output: "static", // or "static" for static sites
+  adapter: awsAmplify(),
+  image: {
+    service: passthroughImageService(), // Bypass sharp image processing
+  },
 });
